@@ -12,6 +12,11 @@
 - Implement a function to reset the entire game board.
 - Ensure one player cannot override the other player's move during the game.
 
+## Technologies
+- React
+- JavaScript
+- Vite
+
 ## Screenshots
 - TODO
 
