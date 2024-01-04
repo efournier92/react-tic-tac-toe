@@ -27,7 +27,7 @@
 
 ### Winner State
 
-![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_draw.png)
+![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_winner.png)
 
 ### Draw State
 
