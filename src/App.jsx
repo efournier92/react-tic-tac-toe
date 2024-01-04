@@ -62,8 +62,9 @@ const buttonStyle = {
 }
 
 const titleStyle = {
-  'fontSize': '70px',
-  'color': colors.white,
+  'fontSize': '72px',
+  'fontWeight': '300',
+  'color': colors.blue,
 }
 
 // Dynamically returns an object for styling the board
