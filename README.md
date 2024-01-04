@@ -22,11 +22,14 @@
 ## Demo Screenshots
 
 ### Initial State
-- ![Initial State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_init.png)
+
+![Initial State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_init.png)
 
 ### Winner State
-- ![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_draw.png)
+
+![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_draw.png)
 
 ### Draw State
-- ![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_draw.png)
+
+![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_draw.png)
 
