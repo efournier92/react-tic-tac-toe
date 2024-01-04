@@ -94,9 +94,9 @@ function Square( { props, onMarkSquare } ) {
   )
 }
 
-function getHasWinningPlayer(boardSquares, playerMark) {
+function checkHasWinningPlayer(boardSquares, playerMark) {
   // All the possible winning combinations of indexes
-  // In order to win, a player needs marks adhering one of these configurations
+  // In order to win, a player needs marks matching one of these configurations
   const winningIndexes = [
     [0, 1, 2],
     [3, 4, 5],
@@ -106,41 +106,38 @@ function getHasWinningPlayer(boardSquares, playerMark) {
     [0, 4, 8],
     [2, 4, 6],
   ]
+
+  // Builds a string representation of a winning combination
+  // Example: Player O's winning combination string is 'OOO'
+  const buildWinningString = (playerMark) => {
+    return `${playerMark}${playerMark}${playerMark}`
+  }
   
-  // Tracks whether the player has a winning index configuration
-  let output = false
-
-  // TODO: Investigate using more efficient JS array functions below
- 
-  // Iterate over each winning index combination
-  winningIndexes.forEach((indexArr) => {
-    // Tracks whether the player has the current index combination
-    let hasWinningIndexes = true
-
-    // Iterate over index in this combination
-    indexArr.forEach((index) => {
-      if (
-        // Skip if we already know this is not a winner
-        hasWinningIndexes &&
-        // This is not a winning combination
-        // If any square from this combination does not contain the current player's mark
-        boardSquares[index].playerMark !== playerMark
-      ) {
-        // Track that this is not a winning combination
-        hasWinningIndexes = false
-      }
+  // Builds a string representation of the winning-index combination we're checking
+  // Example: If the top row of the board is marked ['X', 'O', 'X'], the string representation is 'XOX'
+  const buildStringToTest = (boardSquares, indexes, playerMark) => {
+    const playerMarks = Array.from({ length: 3 }, (value, count) => {
+      const winningIndex = indexes[count]
+      return boardSquares[winningIndex].playerMark
     })
-    
-    // Track that this is a winner
-    if (hasWinningIndexes === true) {
-      output = true
-    }
-  })
+
+    return playerMarks.join('')
+  }
   
-  return output
+  // Build the winning string up front for efficiency
+  // No need to rebuild this on each iteration of `some`
+  const winningString = buildWinningString(playerMark)
+  
+  // Return whether any of the winning index combinations are marked by the current player
+  // This `some` approach is significantly more efficient than checking via a nested loop
+  return winningIndexes.some((indexes) => {
+    const stringToTest = buildStringToTest(boardSquares, indexes, playerMark)
+
+    return stringToTest === winningString
+  })
 }
 
-function getIsDraw(boardSquares) {
+function checkIsDraw(boardSquares) {
   const isEmptySquare = (square) => square.playerMark === ''
   
   // If any squares are empty
@@ -172,19 +169,22 @@ function Board() {
     setWinningPlayer(strings.none)
     setBoardStyle(getBoardStyle({}))
   }
-
+  
+  // Finalizes the board to a winning state
   const setWinningState = (currentPlayer) => {
     setWinningPlayer(currentPlayer)
     setCurrentPlayer(strings.none)
     setBoardStyle(getBoardStyle({ borderColor: colors.blue }))
   }
 
+  // Finalizes the board to a draw state
   const setDrawState = () => {
     setWinningPlayer(strings.draw)
     setCurrentPlayer(strings.none)
     setBoardStyle(getBoardStyle({ borderColor: colors.red }))
   }
 
+  // Switches to the other player's turn
   const alternateCurrentPlayer = () => {
     if (currentPlayer === strings.x_mark) {
       setCurrentPlayer(strings.o_mark)
@@ -212,7 +212,7 @@ function Board() {
     setBoardState(boardSquares)
     
     // Check if the current player won with their last move
-    const hasWinningPlayer = getHasWinningPlayer(boardSquares, currentPlayer)
+    const hasWinningPlayer = checkHasWinningPlayer(boardSquares, currentPlayer)
 
     // Set the board to an end-game state if the current player won
     if (hasWinningPlayer) {
@@ -221,7 +221,7 @@ function Board() {
     }
     
     // Check if the game is a draw
-    const isDraw = getIsDraw(boardSquares)
+    const isDraw = checkIsDraw(boardSquares)
 
     // Set the board to a draw state if all squares are marked and there is no winner
     if (isDraw) {
