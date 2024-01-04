@@ -5,7 +5,7 @@
 - The game should work as follows:
   - The 1st player places an `X` anywhere on the board by clicking a square.
   - The 2nd player places an `O` on the board.
-  - The game continues to alternate this way after each turn.
+  - The game continues to alternate the same way after each turn.
 - Implement a function to determine if any player won by getting 3 `X`s or 3 `O`s diagonally, horizontally, or vertically.
 - If there is a winner, display a message at the top indicating who won.
   - If nobody has yet won, then do not display any message.
