@@ -13,10 +13,16 @@
 - Implement a function to reset the entire game board.
 - Ensure one player cannot override the other player's move during the game.
 
+## Noteworthy Logic
+
+- [Algorithm to check for a winner.](https://github.com/efournier92/react-tic-tac-toe/blob/7a9ab06d4019b15dba6298d3b81b57446f61c3e2/src/App.jsx#L98)
+- [Game board implementation.](https://github.com/efournier92/react-tic-tac-toe/blob/7a9ab06d4019b15dba6298d3b81b57446f61c3e2/src/App.jsx#L160)
+- [Handling when a player marks a square.](https://github.com/efournier92/react-tic-tac-toe/blob/7a9ab06d4019b15dba6298d3b81b57446f61c3e2/src/App.jsx#L198)
+
 ## Technologies Utilized
 
-- React
 - JavaScript
+- React
 - Vite
 
 ## Demo Screenshots

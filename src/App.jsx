@@ -98,12 +98,13 @@ function Square( { props, onMarkSquare } ) {
 function checkHasWinningPlayer(boardSquares, playerMark) {
   // All the possible winning combinations of indexes
   // In order to win, a player needs marks matching one of these configurations
-  const winningIndexes = [
+  const winningIndexCombinations = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
     [0, 3, 6],
     [1, 4, 7],
+    [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
   ]
@@ -111,7 +112,7 @@ function checkHasWinningPlayer(boardSquares, playerMark) {
   // Builds a string representation of a winning combination
   // Example: Player O's winning combination string is 'OOO'
   const buildWinningString = (playerMark) => {
-    return `${playerMark}${playerMark}${playerMark}`
+    return playerMark + playerMark + playerMark
   }
   
   // Builds a string representation of the winning-index combination we're checking
@@ -121,7 +122,8 @@ function checkHasWinningPlayer(boardSquares, playerMark) {
       const winningIndex = indexes[count]
       return boardSquares[winningIndex].playerMark
     })
-
+    
+    // Join the resulting array as a string without commas
     return playerMarks.join('')
   }
   
@@ -131,7 +133,7 @@ function checkHasWinningPlayer(boardSquares, playerMark) {
   
   // Return whether any of the winning index combinations are marked by the current player
   // This `some` approach is significantly more efficient than checking via a nested loop
-  return winningIndexes.some((indexes) => {
+  return winningIndexCombinations.some((indexes) => {
     const stringToTest = buildStringToTest(boardSquares, indexes, playerMark)
 
     return stringToTest === winningString
