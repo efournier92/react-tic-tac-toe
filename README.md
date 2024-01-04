@@ -1,6 +1,7 @@
 # React Tic Toe
 
-## Challenge
+## Challenge Description
+
 - The goal is to create a functioning [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe) game.
 - The game should work as follows:
   - The 1st player places an `X` anywhere on the board by clicking a square.
@@ -12,11 +13,20 @@
 - Implement a function to reset the entire game board.
 - Ensure one player cannot override the other player's move during the game.
 
-## Technologies
+## Technologies Utilized
+
 - React
 - JavaScript
 - Vite
 
-## Screenshots
-- TODO
+## Demo Screenshots
+
+### Initial State
+- ![Initial State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_init.png)
+
+### Winner State
+- ![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_draw.png)
+
+### Draw State
+- ![Draw State](https://raw.githubusercontent.com/efournier92/react-tic-tac-toe/master/public/screenshots/screenshot_draw.png)
 
